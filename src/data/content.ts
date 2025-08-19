@@ -7,7 +7,8 @@ export const personal = {
   linkedin: "https://www.linkedin.com/in/mohammed-awais-882395200/",
   summary:
     "NetSuite Developer with strong experience in SuiteScript (1.0/2.0/2.1), customizations, approvals, integrations, and SFTP automation. Passionate about building reliable solutions that streamline finance, operations, and reporting.",
-  resumeHref: "/Mohammed_Awais_resume.pdf",
+  // Use relative path so it works with GitHub Pages basePath
+  resumeHref: "Mohammed_Awais_resume.pdf",
 };
 
 export const experiences = [
