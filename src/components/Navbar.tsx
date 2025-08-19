@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { ArrowDownToLine } from "lucide-react";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { personal } from "@/data/content";
 
 const navItems = [
   { href: "#about", label: "About" },
@@ -29,7 +30,7 @@ export function Navbar() {
           </div>
           <div className="flex items-center gap-3">
             <a
-              href="/resume.pdf"
+              href={personal.resumeHref}
               download
               className="inline-flex items-center gap-2 rounded-md border border-white/10 px-3 py-2 text-sm hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-[var(--ring)]"
             >
