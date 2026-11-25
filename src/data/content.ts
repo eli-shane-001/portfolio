@@ -1,12 +1,22 @@
 export const personal = {
   name: "Mohammed Awais",
-  role: "NetSuite Developer",
+  role: "NetSuite Developer — 5 years",
+  tagline:
+    "SuiteScript 2.1 · Map/Reduce · RESTlets · SuiteTalk. Integrations: SAP, OpenAir, SFTP. ZATCA (Saudi e-invoicing) compliance.",
   location: "Malegaon, Maharashtra",
-  phone: "+91 7972817643",
   email: "asharawais04@gmail.com",
+  // Single source of truth: nothing else in the app may hardcode a profile URL.
   linkedin: "https://www.linkedin.com/in/mohammed-awais-882395200/",
+  github: "https://github.com/eli-shane-001",
+  availability: "Open to NetSuite developer and integration roles — remote, or Pune.",
   summary:
-    "NetSuite Developer with strong experience in SuiteScript (1.0/2.0/2.1), customizations, approvals, integrations, and SFTP automation. Passionate about building reliable solutions that streamline finance, operations, and reporting.",
+    "NetSuite developer building customisations, approvals and integrations — SAP, OpenAir and SFTP — for finance and operations teams. Specialises in Saudi ZATCA e-invoicing compliance.",
+  highlights: [
+    "Map/Reduce bulk processing with governance-safe batching",
+    "OAuth 2.0 / token-based auth against SuiteTalk REST",
+    "Saudi ZATCA e-invoicing compliance",
+    "Approval workflows with multi-stage routing",
+  ],
   // Use relative path so it works with GitHub Pages basePath
   resumeHref: "Mohammed_Awais_resume.pdf",
 };
@@ -17,15 +27,10 @@ export const experiences = [
     role: "NetSuite Technical Consultant",
     period: "Dec 2021 – Apr 2025",
     bullets: [
-      "Client Script to allow a field value to be automatically populated based on condition and a default value to be set in the field.",
-      "Before or after submission, auto-create or update records based on the submitted records using User event scripts.",
-      "Create a CSV file using a Saved Search and upload it to an SFTP server using a Scheduled script.",
-      "Knowledge of customizing forms.",
-      "Experience creating custom transaction and entity fields with sourcing and filtering.",
-      "Create JSON files from records and upload to SFTP.",
-      "Fetch JSON from SFTP and create records.",
-      "Create records using SuiteScript based on conditions.",
-      "E-invoice setup for Saudi Arabia.",
+      "Automated two-way SFTP exchange with scheduled SuiteScript — saved search → CSV upload, records → JSON upload, and inbound JSON parsed into NetSuite records — removing manual file handling.",
+      "Customised forms, transaction and entity fields with sourcing and filtering, and auto-populated fields using Client Script conditional defaults.",
+      "Auto-created and updated related records on submit with User Event scripts, replacing manual follow-up entry.",
+      "Generated records from SuiteScript rules and conditions instead of manual creation.",
     ],
   },
   {
@@ -33,36 +38,51 @@ export const experiences = [
     role: "NetSuite Developer",
     period: "Apr 2025 – Current",
     bullets: [
-      "Resolved problems, improved operations, and provided exceptional service.",
-      "Assisted day-to-day operations, collaborating efficiently with team members.",
-      "Third-party integration using NetSuite REST API.",
-      "Developed various SuiteScripts to meet business requirements.",
+      "Built third-party integrations against the NetSuite REST API, connecting external systems to NetSuite records.",
+      "Delivered SuiteScript customisations and automations for day-to-day business requirements. [[TODO: WNS project specifics]]",
     ],
   },
 ];
 
-export const projects = [
+export type Project = {
+  name: string;
+  role: string;
+  bullets: string[];
+  link?: string;
+  evidence?: string;
+};
+
+export const projects: Project[] = [
+  {
+    name: "ZATCA e-invoicing compliance (Saudi Arabia)",
+    role: "NetSuite implementation",
+    bullets: [
+      "Met Saudi ZATCA e-invoicing requirements for invoices raised in NetSuite, covering Phase [[TODO: 1 or 2]].",
+      "Added the mandated invoice fields and validation, generated the QR code and XML payload, and routed submission through [[TODO: submission path]].",
+      "SuiteScript 2.1, custom records, saved searches.",
+      "Handled [[N]] invoices with a submission error rate of [[N]]%.",
+    ],
+  },
   {
     name: "Sparkhound",
     role: "NetSuite Technical Consultant",
     bullets: [
-      "Designed new processes using NetSuite standard functionality and customizations; supported new implementations and changes to existing systems.",
-      "Performed NetSuite customization and scripting, including SuiteScript to meet client requirements.",
-      "Built combo code functionality to auto-populate location, class, and department using Client Script PostSourcing.",
-      "Implemented two-level transaction approvals: via email and within NetSuite.",
-      "Auto-created projects post internal opportunity approval using SuiteScript.",
-      "Integrated OpenAir with NetSuite to pass approved invoices using Restlet scripts.",
+      "Designed new processes on NetSuite standard functionality plus customisation, and supported both new implementations and changes to live systems.",
+      "Auto-populated location, class and department with a Client Script PostSourcing combo, removing manual field entry on every transaction line.",
+      "Implemented two-level approvals for transactions: email approval routing and native NetSuite approval.",
+      "Auto-created projects once an internal opportunity was approved, using SuiteScript.",
+      "Integrated OpenAir with NetSuite via RESTlet to pass approved invoices into NetSuite.",
     ],
   },
   {
     name: "Sri Energy",
     role: "NetSuite Technical Consultant",
     bullets: [
-      "Integrated SAP and NetSuite.",
-      "Introduced an additional approval component for Purchase Orders using SuiteScript.",
-      "Updated historical records using Map/Reduce.",
-      "Built an Outbound Shipment feature via SuiteScript 2.1 and Custom Records for multi-SO selection.",
-      "Implemented a custom approval procedure for Quotes using SuiteScript 2.1.",
+      "Integrated SAP with NetSuite for [[TODO: which records and direction]].",
+      "Added an extra Purchase Order approval stage in SuiteScript on top of the standard flow.",
+      "Backfilled [[N]] historical records with Map/Reduce, replacing a manual update.",
+      "Built an Outbound Shipment flow in SuiteScript 2.1 with custom records for multi-sales-order selection.",
+      "Implemented a custom Quote approval procedure in SuiteScript 2.1.",
     ],
   },
 ];
@@ -84,17 +104,16 @@ export const education = [
 
 export const skills = [
   "NetSuite",
-  "SuiteScript 1.0",
-  "SuiteScript 2.0",
   "SuiteScript 2.1",
-  "SuiteFlow",
-  "Saved Searches",
   "Map/Reduce",
-  "User Event / Client / Scheduled / Restlet",
-  "REST APIs",
-  "SFTP",
+  "RESTlets",
+  "SuiteTalk / REST APIs",
+  "OAuth 2.0 / TBA",
+  "Integrations (SAP, OpenAir)",
+  "SFTP automation",
+  "Approval workflows",
+  "Saved Searches / SuiteAnalytics",
   "JavaScript",
   "TypeScript",
   "Python",
 ];
-
