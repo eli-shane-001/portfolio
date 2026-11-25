@@ -1,72 +1,175 @@
 @import "tailwindcss";
 
+/* ---------------------------------------------------------------- tokens */
+
 :root {
-  --background: #0a0b10;
-  --foreground: #e6f0ff;
-  --muted: #9aa4b2;
-  --card: #0f1117;
-  --accent: #6ee7f0; /* teal */
-  --accent-2: #7c3aed; /* purple */
-  --ring: rgba(110, 231, 240, 0.45);
+  --paper: #fbfaf8;
+  --ink: #16202e;
+  --ink-soft: #5a6473;
+  --rule: #d9dce1;
+  --accent: #8c2f39;
+  --accent-ink: #ffffff;
+  --rail: #f3f4f6;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #14181d;
+    --ink: #e8e6e1;
+    --ink-soft: #9aa3ad;
+    --rule: #2a3138;
+    --accent: #e0919a;
+    --accent-ink: #14181d;
+    --rail: #191e24;
+  }
+}
+
+:root[data-theme="dark"] {
+  --paper: #14181d;
+  --ink: #e8e6e1;
+  --ink-soft: #9aa3ad;
+  --rule: #2a3138;
+  --accent: #e0919a;
+  --accent-ink: #14181d;
+  --rail: #191e24;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-rule: var(--rule);
+  --color-accent: var(--accent);
+  --color-rail: var(--rail);
+  --font-sans: var(--font-archivo);
+  --font-serif: var(--font-newsreader);
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    --background: #ffffff;
-    --foreground: #171717;
-    --muted: #4b5563;
-    --card: #f8fafc;
-    --accent: #2563eb;
-    --accent-2: #14b8a6;
-    --ring: rgba(37, 99, 235, 0.35);
-  }
+/* ----------------------------------------------------------------- base */
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: radial-gradient(1200px 800px at 10% -10%, #0d1220 0%, transparent 50%),
-    radial-gradient(1000px 700px at 110% 10%, #132037 0%, transparent 45%),
-    var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-newsreader), Georgia, serif;
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Utilities */
-.container {
-  width: 100%;
-  max-width: 1100px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 1rem;
-  padding-right: 1rem;
+::selection {
+  background: var(--accent);
+  color: var(--accent-ink);
 }
 
-.glass {
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.06),
-    rgba(255, 255, 255, 0.03)
-  );
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
 }
 
-.tag {
-  background: rgba(124, 58, 237, 0.12);
-  color: #d6ccff;
-  border: 1px solid rgba(124, 58, 237, 0.35);
+a {
+  color: inherit;
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 1px;
 }
 
-/* The tag colours above are fixed; on a white page they land at 1.26:1. */
-@media (prefers-color-scheme: light) {
-  .tag {
-    color: #4c1d95;
-    background: rgba(124, 58, 237, 0.08);
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ------------------------------------------------------------- utilities */
+
+/* Meta text: dates, labels, figures. Archivo with tabular numerals so
+   columns of dates line up. */
+.meta {
+  font-family: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+  color: var(--ink-soft);
+}
+
+.meta-ink {
+  color: var(--ink);
+}
+
+.rule {
+  border: 0;
+  border-top: 1px solid var(--rule);
+}
+
+/* Link inside body copy: underline that thickens on hover. */
+.link {
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--accent) 45%, transparent);
+  transition: text-decoration-color 120ms ease;
+}
+
+.link:hover {
+  text-decoration-color: var(--accent);
+}
+
+/* ---------------------------------------------------------------- print */
+
+@media print {
+  :root {
+    --paper: #ffffff;
+    --ink: #000000;
+    --ink-soft: #333333;
+    --rule: #bbbbbb;
+    --accent: #000000;
+    --rail: #ffffff;
+  }
+
+  html,
+  body {
+    background: #ffffff;
+    font-size: 10.5pt;
+    line-height: 1.45;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .print-block {
+    display: block !important;
+    position: static !important;
+    max-width: none !important;
+    padding: 0 !important;
+  }
+
+  section {
+    break-inside: avoid;
+  }
+
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-family: var(--font-archivo), sans-serif;
+    font-size: 8.5pt;
+    color: #444444;
+    /* Prefer breaking at hyphens; only split a word if there is no choice. */
+    overflow-wrap: anywhere;
+  }
+
+  a[href^="mailto"]::after {
+    content: none;
+  }
+}
+
+@page {
+  margin: 14mm;
 }

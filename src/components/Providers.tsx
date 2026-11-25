@@ -5,9 +5,13 @@ import { PropsWithChildren } from "react";
 
 export function Providers({ children }: PropsWithChildren) {
   return (
-    <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+    <ThemeProvider
+      attribute="data-theme"
+      defaultTheme="system"
+      enableSystem
+      disableTransitionOnChange
+    >
       {children}
     </ThemeProvider>
   );
 }
-
