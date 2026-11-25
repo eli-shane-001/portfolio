@@ -62,3 +62,11 @@ body {
   color: #d6ccff;
   border: 1px solid rgba(124, 58, 237, 0.35);
 }
+
+/* The tag colours above are fixed; on a white page they land at 1.26:1. */
+@media (prefers-color-scheme: light) {
+  .tag {
+    color: #4c1d95;
+    background: rgba(124, 58, 237, 0.08);
+  }
+}
