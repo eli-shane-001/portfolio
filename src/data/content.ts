@@ -39,7 +39,7 @@ export const experiences = [
     period: "Apr 2025 – Current",
     bullets: [
       "Built third-party integrations against the NetSuite REST API, connecting external systems to NetSuite records.",
-      "Delivered SuiteScript customisations and automations for day-to-day business requirements. [[TODO: WNS project specifics]]",
+      "Delivered SuiteScript customisations and automations for day-to-day business requirements.",
     ],
   },
 ];
@@ -57,10 +57,9 @@ export const projects: Project[] = [
     name: "ZATCA e-invoicing compliance (Saudi Arabia)",
     role: "NetSuite implementation",
     bullets: [
-      "Met Saudi ZATCA e-invoicing requirements for invoices raised in NetSuite, covering Phase [[TODO: 1 or 2]].",
-      "Added the mandated invoice fields and validation, generated the QR code and XML payload, and routed submission through [[TODO: submission path]].",
+      "Met Saudi ZATCA e-invoicing requirements for invoices raised in NetSuite.",
+      "Added the mandated invoice fields and validation, and generated the QR code and XML payload ZATCA requires.",
       "SuiteScript 2.1, custom records, saved searches.",
-      "Handled [[N]] invoices with a submission error rate of [[N]]%.",
     ],
   },
   {
@@ -78,9 +77,9 @@ export const projects: Project[] = [
     name: "Sri Energy",
     role: "NetSuite Technical Consultant",
     bullets: [
-      "Integrated SAP with NetSuite for [[TODO: which records and direction]].",
+      "Integrated SAP and NetSuite, exchanging records between the two systems.",
       "Added an extra Purchase Order approval stage in SuiteScript on top of the standard flow.",
-      "Backfilled [[N]] historical records with Map/Reduce, replacing a manual update.",
+      "Backfilled historical records with Map/Reduce in governance-safe batches, replacing a manual update.",
       "Built an Outbound Shipment flow in SuiteScript 2.1 with custom records for multi-sales-order selection.",
       "Implemented a custom Quote approval procedure in SuiteScript 2.1.",
     ],
