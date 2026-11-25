@@ -13,9 +13,18 @@ export function Projects() {
               <li key={i}>{b}</li>
             ))}
           </ul>
+          {p.link ? (
+            <a
+              href={p.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 inline-block text-sm text-[var(--accent)] hover:underline"
+            >
+              {p.evidence ?? "Read more"} →
+            </a>
+          ) : null}
         </div>
       ))}
     </div>
   );
 }
-

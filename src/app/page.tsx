@@ -5,6 +5,7 @@ import { Experience } from "@/components/Experience";
 import { Projects } from "@/components/Projects";
 import { Education } from "@/components/Education";
 import { Skills } from "@/components/Skills";
+import { personal } from "@/data/content";
 
 export default function Home() {
   return (
@@ -29,9 +30,28 @@ export default function Home() {
       </Section>
 
       <footer className="container py-12 text-sm text-center text-[var(--muted)]">
-        © {new Date().getFullYear()} Mohammed Awais. All rights reserved. ·
-        <a href="mailto:asharawais04@gmail.com" className="hover:underline ml-1">Email</a> ·
-        <a href="https://www.linkedin.com/in/mohammed-awais-netsuite" target="_blank" rel="noreferrer" className="hover:underline ml-1">LinkedIn</a>
+        © {new Date().getFullYear()} {personal.name}. All rights reserved. ·{" "}
+        <a href={`mailto:${personal.email}`} className="hover:underline">
+          Email
+        </a>{" "}
+        ·{" "}
+        <a
+          href={personal.linkedin}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:underline"
+        >
+          LinkedIn
+        </a>{" "}
+        ·{" "}
+        <a
+          href={personal.github}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:underline"
+        >
+          GitHub
+        </a>
       </footer>
     </div>
   );
