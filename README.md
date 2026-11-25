@@ -1,36 +1,31 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Mohammed Awais — Portfolio
 
-## Getting Started
+Personal portfolio for a NetSuite developer: experience, projects, skills and resume, as a static site.
 
-First, run the development server:
+**Stack:** Next.js 15 (App Router, static export) · TypeScript · Tailwind CSS 4 · `next-themes` · `lucide-react`
+
+## Run locally
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000/portfolio
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The site is served under the `/portfolio` basePath, so the base URL includes it.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Other scripts: `npm run build` (writes `out/`), `npm run lint`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Deploy
 
-## Learn More
+Push to `main` → GitHub Actions ([`.github/workflows/deploy.yml`](.github/workflows/deploy.yml)) builds the static export and publishes it to GitHub Pages at
+<https://eli-shane-001.github.io/portfolio/>. No manual deploy step.
 
-To learn more about Next.js, take a look at the following resources:
+## Content
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+All copy lives in [`src/data/content.ts`](src/data/content.ts) — profile links, summary, experience bullets, projects, education and skills. Edit that file rather than the components; identity fields (email, LinkedIn, GitHub, resume path) are rendered from `personal` and must not be hardcoded anywhere else.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Placeholders written as `[[N]]` or `[[TODO: …]]` in that file are deliberately unfilled facts awaiting real numbers.
 
-## Deploy on Vercel
+## Social image
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+`public/og.png` (1200×630) backs the Open Graph and Twitter card. Replace it with a new PNG of the same name and size if the branding changes.
